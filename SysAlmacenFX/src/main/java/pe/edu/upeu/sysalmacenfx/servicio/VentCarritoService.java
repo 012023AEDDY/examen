@@ -1,28 +1,31 @@
-package pe.edu.upeu.tienda.servicio;
+package pe.edu.upeu.sysalmacenfx.servicio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upeu.tienda.modelo.Trabajador;
-import pe.edu.upeu.tienda.repositorio.TrabajadorRepository;
+import pe.edu.upeu.sysalmacenfx.modelo.CompCarrito;
+import pe.edu.upeu.sysalmacenfx.modelo.VentCarrito;
+import pe.edu.upeu.sysalmacenfx.repositorio.VentCarritoRepository;
+
 import java.util.List;
 
 @Service
-public class TrabajadorService {
+public class VentCarritoService {
     @Autowired
-    TrabajadorRepository repo;
+    VentCarritoRepository repo;
 
-    public Trabajador save(Trabajador to) {
+    public VentCarrito save(VentCarrito to) {
         return repo.save(to);
     }
 
-    public List<Trabajador> list() {
+    public List<VentCarrito> list() {
         return repo.findAll();
     }
 
-    public Trabajador update(Trabajador to, Long id) {
+    public VentCarrito update(VentCarrito to, Long id) {
         try {
-            Trabajador toe = repo.findById(id).orElse(null);
+            VentCarrito toe = repo.findById(id).orElse(null);
             if (toe != null) {
-                toe.setContrasena(to.getContrasena());
+                toe.setEstado(to.getEstado());
                 return repo.save(toe);
             }
         } catch (Exception e) {
@@ -35,7 +38,7 @@ public class TrabajadorService {
         repo.deleteById(id);
     }
 
-    public Trabajador searchById(Long id) {
+    public VentCarrito searchById(Long id) {
         return repo.findById(id).orElse(null);
     }
 }

@@ -19,7 +19,7 @@ public class Trabajador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_trabajador")
-    private Long idTrabajdor;
+    private Long idTrabajador;
     @Column(name = "nombres", nullable = false, length =10)
     private String nombres;
     @Column(name="apellido_paterno", nullable = false, length =10)
@@ -35,8 +35,8 @@ public class Trabajador {
     @Column(name= "contraseña", nullable = false, length =30)
     private String contrasena;
 
-    @JoinColumn(name = "id_cargo", referencedColumnName = "id_cargo")
+    @JoinColumn(name = "id_trabajador", referencedColumnName = "id_trabajador")
     @ManyToOne(optional = false)
-    private Cargo idCargo;
+    private Trabajador idTrabajdor;
 
 }

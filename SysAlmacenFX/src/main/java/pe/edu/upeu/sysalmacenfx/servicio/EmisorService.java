@@ -1,28 +1,30 @@
-package pe.edu.upeu.tienda.servicio;
+package pe.edu.upeu.sysalmacenfx.servicio;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upeu.tienda.modelo.Trabajador;
-import pe.edu.upeu.tienda.repositorio.TrabajadorRepository;
+import pe.edu.upeu.sysalmacenfx.modelo.Emisor;
+import pe.edu.upeu.sysalmacenfx.repositorio.EmisorRepository;
+
 import java.util.List;
 
 @Service
-public class TrabajadorService {
+public class EmisorService {
     @Autowired
-    TrabajadorRepository repo;
+    EmisorRepository repo;
 
-    public Trabajador save(Trabajador to) {
+    public Emisor save(Emisor to) {
         return repo.save(to);
     }
 
-    public List<Trabajador> list() {
+    public List<Emisor> list() {
         return repo.findAll();
     }
 
-    public Trabajador update(Trabajador to, Long id) {
+    public Emisor update(Emisor to, Long id) {
         try {
-            Trabajador toe = repo.findById(id).orElse(null);
+            Emisor toe = repo.findById(id).orElse(null);
             if (toe != null) {
-                toe.setContrasena(to.getContrasena());
+                toe.setRuc(to.getRuc());
                 return repo.save(toe);
             }
         } catch (Exception e) {
@@ -35,7 +37,7 @@ public class TrabajadorService {
         repo.deleteById(id);
     }
 
-    public Trabajador searchById(Long id) {
+    public Emisor searchById(Long id) {
         return repo.findById(id).orElse(null);
     }
 }

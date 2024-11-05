@@ -1,28 +1,31 @@
-package pe.edu.upeu.tienda.servicio;
+package pe.edu.upeu.sysalmacenfx.servicio;
+
+import jakarta.persistence.Id;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upeu.tienda.modelo.Trabajador;
-import pe.edu.upeu.tienda.repositorio.TrabajadorRepository;
+import pe.edu.upeu.sysalmacenfx.modelo.Proveedor;
+import pe.edu.upeu.sysalmacenfx.repositorio.ProveedorRepository;
+
 import java.util.List;
 
 @Service
-public class TrabajadorService {
+public class ProveedorService {
     @Autowired
-    TrabajadorRepository repo;
+    ProveedorRepository repo;
 
-    public Trabajador save(Trabajador to) {
+    public Proveedor save(Proveedor to) {
         return repo.save(to);
     }
 
-    public List<Trabajador> list() {
+    public List<Proveedor> list() {
         return repo.findAll();
     }
 
-    public Trabajador update(Trabajador to, Long id) {
+    public Proveedor update(Proveedor to, Long id) {
         try {
-            Trabajador toe = repo.findById(id).orElse(null);
+            Proveedor toe = repo.findById(id).orElse(null);
             if (toe != null) {
-                toe.setContrasena(to.getContrasena());
+                toe.setDniRuc(to.getDniRuc());
                 return repo.save(toe);
             }
         } catch (Exception e) {
@@ -35,7 +38,7 @@ public class TrabajadorService {
         repo.deleteById(id);
     }
 
-    public Trabajador searchById(Long id) {
+    public Proveedor searchById(Long id) {
         return repo.findById(id).orElse(null);
     }
 }

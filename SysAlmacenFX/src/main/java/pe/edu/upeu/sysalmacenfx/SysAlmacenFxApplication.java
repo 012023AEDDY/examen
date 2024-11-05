@@ -1,4 +1,4 @@
-package pe.edu.upeu.tienda;
+package pe.edu.upeu.sysalmacenfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class TiendaApplication extends Application {
+public class SysAlmacenFxApplication extends Application {
 
 	private static ConfigurableApplicationContext configurableApplicationContext;
 	private Parent parent;
@@ -24,7 +24,7 @@ public class TiendaApplication extends Application {
 
 	@Override
 	public void init() throws Exception {
-		SpringApplicationBuilder builder = new SpringApplicationBuilder(TiendaApplication.class);
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(SysAlmacenFxApplication.class);
 		builder.application().setWebApplicationType(WebApplicationType.NONE);
 		configurableApplicationContext = builder.run(getParameters().getRaw().toArray(new String[0]));
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
@@ -36,7 +36,7 @@ public class TiendaApplication extends Application {
 		Scene scene = new Scene(parent);
 		scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
 		stage.setScene(scene);
-		stage.setTitle("tiendafx Spring Java-FX");
+		stage.setTitle("SysAlmacen Spring Java-FX");
 		stage.setResizable(false);
 		stage.show();
 	}
